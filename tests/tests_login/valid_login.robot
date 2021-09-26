@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     A test suite with a single Gherkin style test.
 ...
-Resource          resource.robot
+Resource          login_resource.robot
 Test Teardown     Close Browser
 
 *** Test Cases ***
