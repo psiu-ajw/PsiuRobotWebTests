@@ -7,14 +7,14 @@ Documentation     A resource file with reusable keywords and variables.
 Library           SeleniumLibrary
 
 *** Variables ***
-${SERVER}         localhost:7272
+${SERVER}         45.80.153.95/test/psiu-gestor
 ${BROWSER}        Firefox
-${DELAY}          0
-${VALID USER}     demo
-${VALID PASSWORD}    mode
+${DELAY}          1
+${VALID USER}     teste@teste
+${VALID PASSWORD}    teste123
 ${LOGIN URL}      http://${SERVER}/
-${WELCOME URL}    http://${SERVER}/welcome.html
-${ERROR URL}      http://${SERVER}/error.html
+${WELCOME URL}    http://${SERVER}/public/home
+${ERROR URL}      http://${SERVER}/public/login
 
 *** Keywords ***
 Open Browser To Login Page
@@ -24,7 +24,7 @@ Open Browser To Login Page
     Login Page Should Be Open
 
 Login Page Should Be Open
-    Title Should Be    Login Page
+    Title Should Be    PSIU - Entrar
 
 Go To Login Page
     Go To    ${LOGIN URL}
@@ -32,15 +32,15 @@ Go To Login Page
 
 Input Username
     [Arguments]    ${username}
-    Input Text    username_field    ${username}
+    Input Text    email    ${username}
 
 Input Password
     [Arguments]    ${password}
-    Input Text    password_field    ${password}
+    Input Text    password    ${password}
 
 Submit Credentials
     Click Button    login_button
 
 Welcome Page Should Be Open
     Location Should Be    ${WELCOME URL}
-    Title Should Be    Welcome Page
+    Title Should Be    PSIU - Principal

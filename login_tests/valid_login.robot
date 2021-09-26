@@ -1,15 +1,20 @@
 *** Settings ***
-Documentation     A test suite with a single test for valid login.
+Documentation     A test suite with a single Gherkin style test.
 ...
-...               This test has a workflow that is created using keywords in
-...               the imported resource file.
 Resource          resource.robot
+Test Teardown     Close Browser
 
 *** Test Cases ***
 Valid Login
-    Open Browser To Login Page
-    Input Username    demo
-    Input Password    mode
-    Submit Credentials
-    Welcome Page Should Be Open
-    [Teardown]    Close Browser
+    Given browser is opened to login page
+    When user "teste@teste" logs in with password "teste123"
+    Then welcome page should be open
+
+*** Keywords ***
+Browser is opened to login page
+    Open browser to login page
+
+User "${username}" logs in with password "${password}"
+    Input Username    ${username}
+    Input Password    ${password}
+    Submit credentials
